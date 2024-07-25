@@ -6,10 +6,10 @@ import { useRef } from "react";
 import useUploadFile from "../hooks/useUploadFile";
 import { FaFolderClosed } from "react-icons/fa6";
 import { TbFileFilled } from "react-icons/tb";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 import './CSS/HomePage.css'
 import Footer from "./Footer";
+import useDeleteFolder from "../hooks/useDeleteFolder";
 
 
 
@@ -36,6 +36,7 @@ const Homepage = () => {
   const handleAllowCreateFolder = () => {
     setshowCreateFolder(true);
   };
+
   const handleCreateFolder = async () => {
     if (newFolder.length > 0) {
       await createFolder({ name: newFolder, parentId: parentFolder._id });
@@ -44,6 +45,14 @@ const Homepage = () => {
       setNewFolder("");
     }
   };
+
+  const{deleteFolder}=useDeleteFolder();
+
+  const handleDeleteFolder=async(name)=>{
+    // {console.log(name);}
+   await deleteFolder({name, parentId: parentFolder._id});
+   getFileFolders(parentFolder._id);
+  }
 
   const hideCreateFolder=()=>{
     setshowCreateFolder(false);
@@ -64,13 +73,17 @@ const Homepage = () => {
       const file = e.target.files;
       await uploadFile({
         file:file[0],
-        parentId:parentFolder._id
+        parentId:parentFolder._id    
       });
       getFileFolders(parentFolder._id);
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
     } else {
       alert("Uploading is already in progress. Please wait...");
     }
   };
+
 
   useEffect(() => {
     getFileFolders(parentFolder._id);
@@ -81,7 +94,7 @@ const Homepage = () => {
 <>
   <NavBar />
   <div className="home-page-main-container">
-    <h1>Welcome to Home Page</h1>
+    <h1>Welcome to Cloud Home</h1>
     <h4>Cloud Home</h4>
     <button onClick={handleAllowCreateFolder}>Create Folder</button>
     <input
@@ -119,13 +132,13 @@ const Homepage = () => {
           {elem.type === 'file' ? <TbFileFilled className="icon" /> : <FaFolderClosed className="icon" />}
           {/* {console.log(elem.type)} */}
           {elem.name}
-          <MdDelete  className="icon" />
+          <MdDelete  className="icon"  onClick={()=>handleDeleteFolder(elem.name)}/>
 
         </div>
       ))}
     </div>
   </div>
-  <Footer />
+  {/* <Footer /> */}
 </>
 
 
