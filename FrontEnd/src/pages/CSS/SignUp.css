@@ -1,11 +1,10 @@
 
-body {
+/* body {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: #4070f4; */
-}
+} */
 .signup-wrapper {
   position: relative;
   max-width: 430px;
