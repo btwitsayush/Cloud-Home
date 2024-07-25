@@ -1,0 +1,141 @@
+/* styles.css */
+
+.home-page-main-container {
+    padding: 2rem;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-sizing: border-box;
+    /* background-color: #0056b3; */
+}
+
+.home-page-main-container h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.home-page-main-container h4 {
+    font-size: 1.5rem;
+    color: #555555;
+    margin-bottom: 2rem;
+}
+
+.home-page-main-container button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: background-color 0.3s;
+}
+
+.home-page-main-container button:hover {
+    background-color: #0056b3;
+}
+
+.file-upload-input {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.home-page-folder-list {
+    display: flex;
+    padding: 1.5rem 0;
+    gap: 1.5rem;
+    list-style-type: none;
+    margin: 0;
+    overflow-x: auto; 
+}
+
+.home-page-folder-list li {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.home-page-folder-list li:hover {
+    background-color: #e2e6ea;
+}
+
+.home-page-create-folder-container {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    /* background-color: #28a745; */
+}
+
+.home-page-create-folder-container input {
+    padding: 0.5rem;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.home-page-create-folder-container button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.home-page-create-folder-container button:nth-of-type(1) {
+    background-color: #28a745;
+}
+
+.home-page-create-folder-container button:nth-of-type(2) {
+    background-color: #dc3545;
+}
+
+.home-page-create-folder-container button:hover {
+    opacity: 0.9;
+}
+
+.home-page-file-folders {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.home-page-file-folder {
+    padding: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-width: 80px; 
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.home-page-file-folder:hover {
+    /* background-color: #e2e6ea; */
+}
+
+
+.home-page-file-folder.uploaded-file {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.home-page-file-folder.created-folder {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+/* Icons */
+.home-page-file-folder .icon {
+    font-size: 1.5rem;
+}

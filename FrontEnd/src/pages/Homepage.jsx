@@ -4,6 +4,15 @@ import userCreateFolder from "../hooks/useCreateFolder";
 import useGetFileFolder from "../hooks/useGetFileFolder";
 import { useRef } from "react";
 import useUploadFile from "../hooks/useUploadFile";
+import { FaFolderClosed } from "react-icons/fa6";
+import { TbFileFilled } from "react-icons/tb";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { MdDelete } from "react-icons/md";
+import './CSS/HomePage.css'
+import Footer from "./Footer";
+
+
+
 const Homepage = () => {
   const [newFolder, setNewFolder] = useState("");
   const [showCreateFolder, setshowCreateFolder] = useState(false);
@@ -36,6 +45,11 @@ const Homepage = () => {
     }
   };
 
+  const hideCreateFolder=()=>{
+    setshowCreateFolder(false);
+    setNewFolder("");
+  }
+
   const {isUploadAllowed,uploadFile}=useUploadFile();
 
   const handleBackClick = (clickIdx) => {
@@ -62,46 +76,60 @@ const Homepage = () => {
     getFileFolders(parentFolder._id);
   }, [folderStructure]);
   return (
-    <>
-      <NavBar />
-      <div className="homepage-main-container">
-        <h1>Welocme to home page</h1>
-        <h4>Cloud Home</h4>
-        <button onClick={handleAllowCreateFolder}>Create Folder</button>
+
+
+<>
+  <NavBar />
+  <div className="home-page-main-container">
+    <h1>Welcome to Home Page</h1>
+    <h4>Cloud Home</h4>
+    <button onClick={handleAllowCreateFolder}>Create Folder</button>
+    <input
+      className="file-upload-input"
+      ref={inputRef}
+      type="file"
+      onChange={handleFileUpload}
+    />
+    <ul className="home-page-folder-list">
+      {folderStructure.map((elem, idx) => (
+        <li key={idx} onClick={() => handleBackClick(idx)}>
+          {elem.name}
+        </li>
+      ))}
+    </ul>
+    {showCreateFolder && (
+      <div className="home-page-create-folder-container">
         <input
-          className="file-upload-input"
-          ref={inputRef}
-          type="file"
-          onChange={handleFileUpload}
+          value={newFolder}
+          onChange={(e) => setNewFolder(e.target.value)}
         />
-        <ul style={{ display: "flex", padding: "24px", gap: "24px" }}>
-          {folderStructure.map((elem, idx) => {
-            return <li onClick={() => handleBackClick(idx)}>{elem.name}</li>;
-          })}
-        </ul>
-        <div>
-          {showCreateFolder && (
-            <div>
-              <input
-                value={newFolder}
-                onChange={(e) => setNewFolder(e.target.value)}
-              />
-              <button onClick={handleCreateFolder}>Yes</button>
-              <button>No</button>
-            </div>
-          )}
-        </div>
-        <div>
-          {fileFolders.map((elem) => {
-            return (
-              <div onDoubleClick={() => handleDoubleClick(elem)}>
-                {elem.name}
-              </div>
-            );
-          })}
-        </div>
+        <button onClick={handleCreateFolder}>Yes</button>
+        <button onClick={hideCreateFolder}>No</button>
       </div>
-    </>
+    )}
+
+    <div className="home-page-file-folders">
+      {fileFolders.map((elem) => (
+
+        <div
+          key={elem.id}
+          className={`home-page-file-folder ${elem.type}`}
+          onDoubleClick={() => handleDoubleClick(elem)}
+        >
+          {elem.type === 'file' ? <TbFileFilled className="icon" /> : <FaFolderClosed className="icon" />}
+          {/* {console.log(elem.type)} */}
+          {elem.name}
+          <MdDelete  className="icon" />
+
+        </div>
+      ))}
+    </div>
+  </div>
+  <Footer />
+</>
+
+
+  
   );
 };
 
