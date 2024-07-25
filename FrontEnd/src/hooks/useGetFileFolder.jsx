@@ -19,6 +19,7 @@ const useGetFileFolder=()=> {
                 },
             });
             const data=await res.json();
+            console.log("get file folder=",data);
 
            setFileFolders(data.data.fileFolders);
         } 
@@ -28,7 +29,7 @@ const useGetFileFolder=()=> {
     }
   
 
-    return {getFileFolders,fileFolders}
+    return {getFileFolders,fileFolders,setFileFolders}
 }
 
 export default useGetFileFolder
