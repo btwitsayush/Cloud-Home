@@ -1,9 +1,13 @@
 const express=require('express');
 const fileFolderRouter=express.Router();
 
-const{getFileFolder}=require('../controllers/fileFolderControllers.js');
+const{getFileFolder,deleteFileFolder}=require('../controllers/fileFolderControllers.js');
 
 
-fileFolderRouter.route('/').post(getFileFolder);
+fileFolderRouter.route('/')
+.post(getFileFolder)
+
+fileFolderRouter.route('/delete')
+.delete(deleteFileFolder);
 
 module.exports=fileFolderRouter;
