@@ -10,7 +10,8 @@ import { MdDelete } from "react-icons/md";
 import './CSS/HomePage.css'
 import Footer from "./Footer";
 import useDeleteFolder from "../hooks/useDeleteFolder";
-
+import useViewFile from "../hooks/useViewFile";
+import { useNavigate } from "react-router-dom";
 
 
 const Homepage = () => {
@@ -30,6 +31,9 @@ const Homepage = () => {
     // console.log("hiii");
     if(elem.type=='folder'){
     setFolderStructure([...folderStructure, elem]);
+    }
+    if(elem.type=='file'){
+      handleViewFile(elem.name)
     }
   };
 
@@ -83,6 +87,18 @@ const Homepage = () => {
       alert("Uploading is already in progress. Please wait...");
     }
   };
+
+  const {viewFile}=useViewFile();
+  const navigate=useNavigate();
+
+ const handleViewFile=async(name)=>{
+
+  await viewFile({name, parentId: parentFolder._id})
+  // console.log(name);
+  // console.log( parentFolder._id);
+
+
+ }
 
 
   useEffect(() => {
@@ -138,7 +154,7 @@ const Homepage = () => {
       ))}
     </div>
   </div>
-  {/* <Footer /> */}
+  <Footer />
 </>
 
 
