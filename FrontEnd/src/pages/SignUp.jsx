@@ -21,7 +21,7 @@ const SignUp = () => {
   };
 
   return (
-    <>
+    <div className="sign-up-container">
       <div className="signup-wrapper">
         <h2>Registration</h2>
         <section id='form'>
@@ -36,7 +36,7 @@ const SignUp = () => {
           </div>
           <div className="signup-policy">
             <input type="checkbox" />
-            <h3>I accept all terms & condition</h3>
+            <h3>I accept all terms & conditions</h3>
           </div>
           <div className="signup-input-box signup-button">
             <button onClick={handleSubmit}>Register Now</button>
@@ -46,7 +46,7 @@ const SignUp = () => {
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 };
 

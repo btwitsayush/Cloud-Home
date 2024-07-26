@@ -1,10 +1,12 @@
 
-/* body {
-  min-height: 100vh;
+.sign-up-container {
   display: flex;
-  align-items: center;
   justify-content: center;
-} */
+  align-items: center;
+  min-height: 100vh; 
+  padding: 20px; 
+}
+
 .signup-wrapper {
   position: relative;
   max-width: 430px;
@@ -14,12 +16,14 @@
   border-radius: 6px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
+
 .signup-wrapper h2 {
   position: relative;
   font-size: 22px;
   font-weight: 600;
   color: #333;
 }
+
 .signup-wrapper h2::before {
   content: '';
   position: absolute;
@@ -30,14 +34,17 @@
   border-radius: 12px;
   background: #4070f4;
 }
+
 .signup-wrapper section {
   margin-top: 30px;
 }
+
 .signup-wrapper section .signup-input-box {
   height: 52px;
   margin: 18px 0;
 }
-section .signup-input-box input {
+
+.signup-input-box input {
   height: 100%;
   width: 100%;
   outline: none;
@@ -50,20 +57,24 @@ section .signup-input-box input {
   border-radius: 6px;
   transition: all 0.3s ease;
 }
+
 .signup-input-box input:focus,
 .signup-input-box input:valid {
   border-color: #4070f4;
 }
-section .signup-policy {
+
+.signup-policy {
   display: flex;
   align-items: center;
 }
-section h3 {
+
+.signup-policy h3 {
   color: #707070;
   font-size: 14px;
   font-weight: 500;
   margin-left: 10px;
 }
+
 .signup-input-box.signup-button button {
   color: #fff;
   letter-spacing: 1px;
@@ -77,18 +88,22 @@ section h3 {
   font-size: 17px;
   font-weight: 400;
 }
+
 .signup-input-box.signup-button button:hover {
   background: #0e4bf1;
 }
-section .signup-text h3 {
+
+.signup-text h3 {
   color: #333;
   width: 100%;
   text-align: center;
 }
-section .signup-text h3 a {
+
+.signup-text h3 a {
   color: #4070f4;
   text-decoration: none;
 }
-section .signup-text h3 a:hover {
+
+.signup-text h3 a:hover {
   text-decoration: underline;
 }
