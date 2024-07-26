@@ -5,9 +5,9 @@ const getFileFolder=async (req,res)=>{
 
     try{
     const{_id}=req.user;
-    console.log(req.body);
+    // console.log(req.body);
     const{parentId}=req.body;
-    console.log(parentId);
+    // console.log(parentId);
     const fileFolders=await fileFolderModel.find({userId:_id,parentId});
 
     res.status(200).json({
@@ -31,23 +31,23 @@ const getFileFolder=async (req,res)=>{
 const deleteFileFolder=async(req,res)=>{
     try{
     const{_id}=req.user;
-    console.log("id=",_id);
+    // console.log("id=",_id);
     const{parentId,name}=req.body;
-    console.log("parentId",parentId);
-    console.log("name",name);
+    // console.log("parentId",parentId);
+    // console.log("name",name);
 
-    const fileFolders=await fileFolderModel.findOneAndDelete({
+    const isFileFolderExist=await fileFolderModel.findOneAndDelete({
         userId:_id,
         parentId,
         name
     });
 
-    if(fileFolders!=null){
+    if(isFileFolderExist){
         res.status(200).json({
             status:"success",
             message:"File/Folder deleted",
             data:{
-                fileFolders
+                isFileFolderExist
             }
         })
 
@@ -66,6 +66,7 @@ const deleteFileFolder=async(req,res)=>{
    
 
 }
+
 
 module.exports={
     getFileFolder,
