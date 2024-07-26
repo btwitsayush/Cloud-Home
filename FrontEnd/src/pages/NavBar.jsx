@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { appLogOut } from '../store/slices/authSlice';
+import { Link } from 'react-router-dom';
 import "./CSS/NavBar.css";
 
 const NavBar=()=> {
@@ -21,9 +22,9 @@ const NavBar=()=> {
         Cloud-Home
       </div>
       <div className="navbar-links">
-        <a href="#home" className="navbar-link">Home</a>
-        <a href="#about-us" className="navbar-link">About Us</a>
-        <a href="#contact-us" className="navbar-link">Contact Us</a>
+        <Link to="/" className="navbar-link">Home</Link>
+        <Link to="/about-us" className="navbar-link">About Us</Link>
+        <Link to="/contact-us" className="navbar-link">Contact Us</Link>
         <button onClick={handleLogout} className="navbar-btn">Logout</button>
       </div>
     </nav>
