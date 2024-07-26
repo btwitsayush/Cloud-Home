@@ -6,6 +6,8 @@ import SignUp from "./src/pages/SignUp";
 import Homepage from "./src/pages/Homepage";
 import { useSelector } from "react-redux";
 import OtpPage from "./src/pages/OtpPage";
+import ViewFile from "./src/pages/viewFile";
+import AboutUs from "./src/pages/AboutUs";
 
 
 const AppRouter=()=>{
@@ -30,6 +32,9 @@ const AppRouter=()=>{
         },{
             path:"/otp",
             element:isAuthorized && !isEmailVerifed ?<OtpPage /> : <Navigate to="/" />
+        },{
+            path:"/about-us",
+            element:<AboutUs />
         }
     ])
 
