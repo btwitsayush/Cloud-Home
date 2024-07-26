@@ -111,5 +111,43 @@ const createFile = async (req, res) => {
    }
 };
 
+const viewFile= async(req,res)=>{
+    try{
+        const{name,parentId}=req.body;
+        const{_id}=req.user;
+        console.log('name=',name);
+        console.log('parentId=',parentId);
+        console.log('_id=',_id);
 
-module.exports = { createFile };
+        const isfileLinkExist=await fileFolderModel.findOne({
+            userId:_id,
+            parentId,
+            name
+        })
+
+        if(isfileLinkExist){
+            res.status(200).json({
+                status:"success",
+                message:"File retrived successfully",
+                data:{
+                    isfileLinkExist
+                }
+            })
+
+        }
+
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json({
+            status: "fail",
+            message: "Internal Server Error",
+        });
+    }
+}
+
+
+module.exports = { 
+    createFile,
+    viewFile
+ };
