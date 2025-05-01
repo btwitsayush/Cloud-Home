@@ -12,15 +12,17 @@ const verifyToken=require('./middlewares/verifyToke.js');
 const fileRouter = require("./router/fileRouter.js");
 
 app.use(express.json());
+app.use(cors({ origin: true }));
 
-app.use(cors({origin:true}))
+// Open routes (signup, login don't need token)
+app.use('/api/v1/auth', authRouter);
 
-app.use('/api/v1/auth',authRouter)
-app.use(verifyToken);
-app.use('/api/v1/otp',otpRouter)
-app.use('/api/v1/folder',folderRouter)
-app.use('/api/v1/file',fileRouter)
-app.use('/api/v1/file-folder',fileFolderRouter)
+// Protected routes (all these require JWT token)
+app.use('/api/v1/otp', verifyToken, otpRouter);
+app.use('/api/v1/folder', verifyToken, folderRouter);
+app.use('/api/v1/file', verifyToken, fileRouter);
+app.use('/api/v1/file-folder', verifyToken, fileFolderRouter);
+
 
 app.listen(process.env.PORT,()=>{
     console.log(`server started at port ${`https://localhost:${process.env.PORT}`}`);

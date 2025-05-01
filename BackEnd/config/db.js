@@ -1,5 +1,6 @@
 const mongoose=require('mongoose')
-const uri = "mongodb+srv://<username>:<password>@cluster0.y2omkap.mongodb.net/<dbName>?appName=Cluster0";
+const uri = "mongodb+srv://<username>:<password>@cluster0.jizg0nn.mongodb.net";
+
 
 let dbURL=uri;
 
